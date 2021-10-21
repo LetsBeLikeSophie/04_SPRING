@@ -1,2 +1,2 @@
 # 04_SPRING
-MVC with Spring
+MVC practice with Spring
