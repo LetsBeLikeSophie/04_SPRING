@@ -16,6 +16,7 @@ public class BoardDAOImpl implements BoardDAO {
 	
 	@Autowired(required=false)
 	private SqlSessionTemplate sqlSession;
+	
 
 	@Override
 	public int boardInsert(BoardVO bvo) {

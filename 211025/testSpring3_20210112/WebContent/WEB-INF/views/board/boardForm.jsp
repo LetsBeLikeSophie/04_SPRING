@@ -51,7 +51,7 @@
 		<td><input type="text" name="sbsubject" id="sbsubject" size="53"></td>
 	</tr>
 	<tr>
-		<td  align="center">이름</td>.
+		<td  align="center">이름</td>
 		<td><input type="text" name="sbname" id="sbname" size="53"></td>
 	</tr>
 	<tr>

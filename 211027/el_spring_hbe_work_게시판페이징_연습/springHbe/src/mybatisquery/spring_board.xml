@@ -14,7 +14,7 @@
 
 <insert id="boardInsert" parameterType="boardVO">
 
-	INSERT INTO SPRING_BOARD( 	SBNUM, 
+	INSERT INTO SPRING_BOARD1( 	SBNUM, 
 								SBSUBJECT, 
 								SBNAME,
 	                          	SBCONTENT, 
@@ -47,7 +47,7 @@
 		       <!--  ? : 페이지 사이즈 : pageSize  -->
 		       ,CEIL(ROW_NUMBER() OVER(ORDER BY A.SBNUM)/ #{pageSize, jdbcType=VARCHAR} ) pageSize		
 			   ,COUNT(A.SBNUM) OVER() AS totalCount       
-		FROM 	SPRING_BOARD A
+		FROM 	SPRING_BOARD1 A
 		WHERE 	A.SBDELYN = 'Y' 	
 		ORDER BY 1 DESC  
 		<!--  ? : 현재 페이지 : curPage -->
@@ -63,7 +63,7 @@
 	       ,A.SBDELYN 	SBDELYN
 	       ,TO_CHAR(A.SBINSERTDATE, 'YYYY-MM-DD') SBINSERTDATE
 	       ,TO_CHAR(A.SBUPDATEDATE, 'YYYY-MM-DD') SBUPDATEDATE	     
-	FROM 	SPRING_BOARD A
+	FROM 	SPRING_BOARD1 A
 	WHERE 	A.SBDELYN = 'Y' 
 	<if test="startdate!=null and startdate!='' and enddate!=null and enddate!=''">
 		<![CDATA[AND TO_CHAR(A.SBINSERTDATE, 'YYYY-MM-DD') >= TO_CHAR(TO_DATE(#{startdate, jdbcType=VARCHAR}), 'YYYY-MM-DD')]]>
@@ -97,23 +97,23 @@
 	       ,A.SBDELYN 	SBDELYN
 	       ,TO_CHAR(A.SBINSERTDATE, 'YYYY-MM-DD') SBINSERTDATE
 	       ,TO_CHAR(A.SBUPDATEDATE, 'YYYY-MM-DD') SBUPDATEDATE
-	FROM SPRING_BOARD A WHERE A.SBDELYN='Y' AND A.SBNUM = #{sbnum, jdbcType=VARCHAR}
+	FROM SPRING_BOARD1 A WHERE A.SBDELYN='Y' AND A.SBNUM = #{sbnum, jdbcType=VARCHAR}
 </select>
 
 <update id="boardUpdate" parameterType="boardVO">
-	UPDATE SPRING_BOARD SET SBCONTENT=#{sbcontent, jdbcType=VARCHAR}, SBUPDATEDATE = SYSDATE
+	UPDATE SPRING_BOARD1 SET SBCONTENT=#{sbcontent, jdbcType=VARCHAR}, SBUPDATEDATE = SYSDATE
 	WHERE SBDELYN = 'Y' AND SBNUM = #{sbnum, jdbcType=VARCHAR}
 </update>
 
 <update id="boardDelete" parameterType="boardVO">
-	UPDATE SPRING_BOARD SET SBDELYN = 'N', SBUPDATEDATE = SYSDATE
+	UPDATE SPRING_BOARD1 SET SBDELYN = 'N', SBUPDATEDATE = SYSDATE
 	WHERE SBDELYN = 'Y' AND SBNUM = #{sbnum, jdbcType=VARCHAR}
 </update>
 
 
 <select id="boardPwCheck" parameterType="boardVO" resultType="boardVO">
 	SELECT A.SBPW SBPW
-	FROM SPRING_BOARD A 
+	FROM SPRING_BOARD1 A 
 	WHERE A.SBDELYN = 'Y' 
 	AND A.SBNUM = #{sbnum, jdbcType=VARCHAR}
 	AND A.SBPW = #{sbpw, jdbcType=VARCHAR}

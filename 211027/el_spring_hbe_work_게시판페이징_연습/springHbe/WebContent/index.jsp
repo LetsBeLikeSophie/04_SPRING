@@ -12,8 +12,8 @@
 <a href="boardForm.h">스프링 게시판 : 글쓰기</a><br>
 <a href="boardSelectAll.h">스프링 게시판 : 글목록 조회</a><br>
 <a href="rboardForm.h">스프링 게시판 : 댓글 테스트</a><br>
-<a /a><br>
 <hr>
 <a href="memForm.h">스프링 회원 : 등록</a><br>
+
 </body>
 </html>
