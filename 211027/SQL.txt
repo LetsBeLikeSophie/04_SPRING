@@ -1,0 +1,21 @@
+SELECT *                             	
+FROM (                             	
+ 		SELECT                        	
+ 			A.mnum,		-- 글번호                	
+ 			A.mtitle,	-- 제목                   	
+ 			A.mname,	-- 작성자                	
+ 			A.memail,	-- 이메일                	
+ 			A.marea,	-- 글내용                 	
+ 			A.mpass,	-- 비밀번호              	
+ 			A.mref,		-- REF       	
+ 			A.mstep,	-- STEP         
+ 			A.mdepth,	-- DEPTH        
+ 			TO_CHAR(A.mwriteday, 'YYYY-MM-DD') mwriteday,  -- 작성일   	
+ 			A.mhits,	-- 조회수                    
+ 			CEIL(ROW_NUMBER() OVER(ORDER BY A.mnum)/ 8 ) PAGENO, 		
+ 			COUNT(mnum) OVER() AS TOTALCOUNT                   		
+ 		FROM                            
+ 			SE_BOARD A                  
+ 		)                               
+ WHERE                                
+ 		PAGENO = 100
