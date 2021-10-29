@@ -123,7 +123,7 @@ BOARD SELECT
 <img src="/springHbe/imgupload/sm_<%= bvo.getSbfile() %>" border="1" width="40" height="50" alt="image">
 </td>
 </tr>
-</tr>
+
 <td class="mem">등록일</td>
 <td> 
 <input type="text" name="sbinsertdate" id="sbinsertdate" value="<%= bvo.getSbinsertdate() %>" readonly />		      
